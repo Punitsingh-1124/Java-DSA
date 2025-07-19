@@ -159,35 +159,146 @@
 // }
 
 //Q6 Remove Element(easy)
-public class ArraysQuestion {
-    public int removeElement(int[] nums, int val) {
-        int count = 0; // Pointer to place elements that are not equal to 'val'
+// public class ArraysQuestion {
+//     public int removeElement(int[] nums, int val) {
+//         int count = 0; // Pointer to place elements that are not equal to 'val'
 
-        // Traverse through the array
+//         // Traverse through the array
+//         for (int i = 0; i < nums.length; i++) {
+//             if (nums[i] != val) {
+//                 nums[count] = nums[i]; // Place the element at the correct position
+//                 count++;
+//             }
+//         }
+
+//         return count; // Return the length of the array without 'val'
+//     }
+
+//     public static void main(String[] args) {
+//         ArraysQuestion solution = new ArraysQuestion();
+
+//         // Example input
+//         int[] nums = { 3, 2, 2, 3, 4 };
+//         int val = 3;
+
+//         // Call removeElement
+//         int newLength = solution.removeElement(nums, val);
+
+//         // Print the new array and its length
+//         System.out.println("New length: " + newLength);
+//         for (int i = 0; i < newLength; i++) {
+//             System.out.print(nums[i] + " ");
+//         }
+//     }
+// }
+
+//Q7 Max Consecutive Ones(easy)
+// public class ArraysQuestion {
+
+//     public int findMaxConsecutiveOnes(int[] nums) {
+//         int curr_count = 0;
+//         int max_count = 0;
+
+//         // Iterate through all elements in the array
+//         for (int i = 0; i < nums.length; i++) {
+//             if (nums[i] == 1) {
+//                 curr_count++;
+//                 max_count = Math.max(max_count, curr_count);
+//             } else {
+//                 curr_count = 0;
+//             }
+//         }
+
+//         return max_count;
+//     }
+
+//     public static void main(String[] args) {
+//         // Create an instance of the class to call the method
+//         ArraysQuestion solution = new ArraysQuestion();
+
+//         // Test case for the LeetCode problem 485
+//         int[] nums = { 1, 1, 0, 1, 1, 1 };
+//         int result = solution.findMaxConsecutiveOnes(nums);
+
+//         // Output the result
+//         System.out.println("Max Consecutive Ones: " + result);
+//     }
+// }
+
+//Q8 Missing Number(easy)
+// class Solution {
+//     public int missingNumber(int[] nums) {
+//         int n = nums.length;
+//         return (n * (n + 1)) / 2 - Arrays.stream(nums).sum();   
+//     }
+// }   ///// this is easyest ans of this code in leetcode but its take time to rum because arethmetic logic
+
+//or
+
+// public class ArraysQuestion {
+
+//     // Method to find the missing number
+//     public int missingNumber(int[] nums) {
+//         // Initialize the sum variable
+//         int sum = 0;
+
+//         // Loop through the array to calculate the sum of the elements
+//         for (int i = 0; i < nums.length; i++) {
+//             sum = sum + nums[i];
+//         }
+
+//         // Calculate the actual sum of numbers from 0 to n (inclusive)
+//         int actualSum = (nums.length * (nums.length + 1)) / 2;
+
+//         // The missing number is the difference between the expected sum and the actual
+//         // sum
+//         int missingnum = actualSum - sum;
+
+//         return missingnum;
+//     }
+
+//     public static void main(String[] args) {
+//         // Create an instance of ArraysQuestion to call the missingNumber method
+//         ArraysQuestion solution = new ArraysQuestion();
+
+//         // Example test case: [3, 0, 1]
+//         int[] nums = { 3, 0, 1 };
+
+//         // Call the missingNumber method and store the result
+//         int missing = solution.missingNumber(nums);
+
+//         // Print the result
+//         System.out.println("Missing number: " + missing); // Output: 2
+//     }
+// }
+
+// Q9 Single Number(easy)
+public class ArraysQuestion {
+    public int singleNumber(int[] nums) {
+        // Initialize count to 0
+        int count = 0;
+
+        // Loop through all the numbers in the array
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != val) {
-                nums[count] = nums[i]; // Place the element at the correct position
-                count++;
-            }
+            // XOR each number with the current value of count
+            count ^= nums[i];
         }
 
-        return count; // Return the length of the array without 'val'
+        // The final result will be the number that appears only once
+        return count;
     }
 
     public static void main(String[] args) {
+        // Create an instance of Solution to call the singleNumber method
         ArraysQuestion solution = new ArraysQuestion();
 
-        // Example input
-        int[] nums = { 3, 2, 2, 3, 4 };
-        int val = 3;
+        // Example test case: [4, 1, 2, 1, 2]
+        int[] nums = { 4, 1, 2, 1, 2 };
 
-        // Call removeElement
-        int newLength = solution.removeElement(nums, val);
+        // Call the singleNumber method and store the result
+        int single = solution.singleNumber(nums);
 
-        // Print the new array and its length
-        System.out.println("New length: " + newLength);
-        for (int i = 0; i < newLength; i++) {
-            System.out.print(nums[i] + " ");
-        }
+        // Print the result
+        System.out.println("Single number: " + single); // Output: 4
     }
 }
