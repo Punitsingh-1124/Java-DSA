@@ -109,7 +109,7 @@
 import java.util.*;
 
 public class Strings {
-    public static void main(String[] args) {
+    public static void main(MyStringBuilder[] args) {
         // String sentence = "My name is tony";
         // String name = sentence.substring(11, sentence.length());
         // System.out.println(name);
@@ -118,8 +118,8 @@ public class Strings {
         // String name = sentence.substring(3);
         // System.out.println(name);
         // //Hardly
-        String sentence = "TomHardly";
-        String name = sentence.substring(0, 3);
+        MyStringBuilder sentence = "TomHardly";
+        MyStringBuilder name = sentence.substring(0, 3);
         System.out.println(name);
         // Tom
     }
