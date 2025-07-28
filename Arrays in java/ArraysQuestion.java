@@ -341,53 +341,233 @@
 // import java.util.*;
 
 // public class ArraysQuestion {
-//     public static void findMinMax(int[] arr) {
-//         if (arr == null || arr.length == 0)
-//             return;
-//         int min = arr[0];
-//         int max = arr[0];
-//         for (int i = 1; i < arr.length; i++) {
-//             if (arr[i] < min) {
-//                 min = arr[i];
-//             }
-//             if (arr[i] > max) {
-//                 max = arr[i];
-//             }
-//         }
-//         System.out.println(max + " maximum");
-//         System.out.println(min + " minimum");
-//     }
+// public static void findMinMax(int[] arr) {
+// if (arr == null || arr.length == 0)
+// return;
+// int min = arr[0];
+// int max = arr[0];
+// for (int i = 1; i < arr.length; i++) {
+// if (arr[i] < min) {
+// min = arr[i];
+// }
+// if (arr[i] > max) {
+// max = arr[i];
+// }
+// }
+// System.out.println(max + " maximum");
+// System.out.println(min + " minimum");
+// }
 
-//     public static void main(String[] args) {
-//         int[] arr = { 6, 2, 3, 4, 1, 9 };
-//         findMinMax(arr);
-//     }
+// public static void main(String[] args) {
+// int[] arr = { 6, 2, 3, 4, 1, 9 };
+// findMinMax(arr);
+// }
 // }
 // 9 maximum
 // 1 minimum
 
-//Or Short code using Math()
-import java.util.*;
+// Or Short code using Math()
+// import java.util.*;
 
-public class ArraysQuestion {
-    public static void findMinMax(int[] arr) {
-        if (arr == null || arr.length == 0)
-            return;
-        int min = arr[0];
-        int max = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            min = Math.min(min, arr[i]);
-            max = Math.max(max, arr[i]);
-        }
-        System.out.println(max + " maximum");
-        System.out.println(min + " minimum");
-    }
+// public class ArraysQuestion {
+// public static void findMinMax(int[] arr) {
+// if (arr == null || arr.length == 0)
+// return;
+// int min = arr[0];
+// int max = arr[0];
+// for (int i = 1; i < arr.length; i++) {
+// min = Math.min(min, arr[i]);
+// max = Math.max(max, arr[i]);
+// }
+// System.out.println(max + " maximum");
+// System.out.println(min + " minimum");
+// }
 
-    public static void main(String[] args) {
-        int[] arr = { 6, 2, 3, 4, 1, 9 };
-        findMinMax(arr);
-    }
-}
+// public static void main(String[] args) {
+// int[] arr = { 6, 2, 3, 4, 1, 9 };
+// findMinMax(arr);
+// }
+// }
 // 9 maximum
 // 1 minimum
 
+// Q12. Move all negative numbers to beginning and positive to end with constant
+// extra space
+
+// import java.util.Arrays;
+
+// public class ArraysQuestion {
+
+// public static void main(String[] args) {
+// int arr[] = { -1, 2, -3, 4, 5, 6 - 7, 8, 9, -6, 3 };
+
+// int left = 0, right = arr.length - 1;
+// while (left < right) {
+// while (arr[left] < 0)
+// left++; // Left at positive
+// while (arr[right] >= 0)
+// right--; // Right at negative
+
+// if (left >= right)
+// break;
+
+// int temp = arr[left];
+// arr[left] = arr[right];
+// arr[right] = temp;
+// }
+// System.out.println(Arrays.toString(arr));
+// }
+// }
+
+// [-1, -6, -3, -1, 5, 4, 8, 9, 2, 3]
+
+// Q13. Union of Arrays with Duplicates
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.List;
+
+// public class ArraysQuestion {
+// public static void main(String[] args) {
+// int arr1[] = { 1, 1, 1, 2, 2, 3, 3, 3 };
+// int arr2[] = { 3, 3, 3, 4 };
+
+// int left = 0, right = 0;
+
+// // union
+// List<Integer> res = new ArrayList<>();
+
+// while (left < arr1.length || right < arr2.length) {
+// // Skip duplicate
+// while (left > 0 && left < arr1.length && arr1[left] == arr1[left - 1]) {
+// left++;
+// }
+// while (right > 0 && right < arr2.length && arr2[right] == arr2[right - 1]) {
+// right++;
+// }
+// // one arrays exh
+// if (left >= arr1.length) {
+// res.add(arr2[right]);
+// right++;
+// continue;
+// }
+// if (right >= arr2.length) {
+// res.add(arr1[left]);
+// left++;
+// continue;
+// }
+// // Comparison
+// if (arr1[left] < arr2[right]) {
+// res.add(arr1[left]);
+// left++;
+// } else if (arr1[left] < arr2[right]) {
+// res.add(arr1[right]);
+// right++;
+// } else {
+// res.add(arr1[left]);
+// right++;
+// left++;
+// }
+// }
+// System.out.println(res);
+// }
+// }
+
+// Q14.Rotate Array by One
+// import java.util.*;
+// import java.util.Arrays;
+
+// public class ArraysQuestion {
+
+//     public static void main(String[] args) {
+//         int nums[] = { 1, 2, 3, 4, 5, 6, 7 };
+//         int k = 3;
+//         System.out.println(Arrays.toString(rotate(nums, k)));
+//     }
+
+//     public static int[] rotate(int[] nums, int k) {
+//         int n = nums.length;
+//         reverse(nums, 0, n - 1);
+//         reverse(nums, 0, k - 1);
+//         reverse(nums, k, n - 1);
+//         return nums;
+
+//     }
+
+//     public static void reverse(int[] nums, int start, int end) {
+//         while (start <= end) {
+//             int temp = nums[start];
+//             nums[start] = nums[end];
+//             nums[end] = temp;
+//             start++;
+//             end--;
+//         }
+//     }
+// }
+// [5, 6, 7, 1, 2, 3, 4]
+
+//Or
+
+//This condition is for {1,2,3} arrays size and k rotatation is 4 k=4;
+// using k
+// import java.util.*;
+// import java.util.Arrays;
+
+// public class ArraysQuestion {
+
+//     public static void main(String[] args) {
+//         int nums[] = { 1, 2, 3 };
+//         int k = 4;
+//         System.out.println(Arrays.toString(rotate(nums, k)));
+//     }
+
+//     public static int[] rotate(int[] nums, int k) {
+//         int n = nums.length;
+//         k = k % n;
+//         reverse(nums, 0, n - 1);
+//         reverse(nums, 0, k - 1);
+//         reverse(nums, k, n - 1);
+//         return nums;
+
+//     }
+
+//     public static void reverse(int[] nums, int start, int end) {
+//         while (start <= end) {
+//             int temp = nums[start];
+//             nums[start] = nums[end];
+//             nums[end] = temp;
+//             start++;
+//             end--;
+//         }
+//     }
+// }
+// [3, 1, 2]
+
+//Q15.Kadane's Algorithm(Maximum Subarray)
+import java.util.*;
+import java.util.Arrays;
+
+public class ArraysQuestion {
+
+    public static void main(String[] args) {
+
+        int[] nums = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        ArraysQuestion sol = new ArraysQuestion();
+        // Calling maxSubArray and printing result
+        int result = sol.maxSubArray(nums);
+        System.out.println("Maximum Subarray Sum: " + result);
+    }
+
+    public int maxSubArray(int[] nums) {
+        int sum = 0;
+        int maxi = nums[0];
+        for (int i = 0; i < nums.length; i++) {
+            sum = sum + nums[i];
+            maxi = Math.max(maxi, sum);
+            if (sum < 0)
+                sum = 0;
+        }
+        return maxi;
+    }
+
+}
+// Maximum Subarray Sum: 6
