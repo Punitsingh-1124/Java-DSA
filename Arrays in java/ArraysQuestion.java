@@ -543,31 +543,57 @@
 // [3, 1, 2]
 
 //Q15.Kadane's Algorithm(Maximum Subarray)
+// import java.util.*;
+// import java.util.Arrays;
+
+// public class ArraysQuestion {
+
+//     public static void main(String[] args) {
+
+//         int[] nums = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+//         ArraysQuestion sol = new ArraysQuestion();
+//         // Calling maxSubArray and printing result
+//         int result = sol.maxSubArray(nums);
+//         System.out.println("Maximum Subarray Sum: " + result);
+//     }
+
+//     public int maxSubArray(int[] nums) {
+//         int sum = 0;
+//         int maxi = nums[0];
+//         for (int i = 0; i < nums.length; i++) {
+//             sum = sum + nums[i];
+//             maxi = Math.max(maxi, sum);
+//             if (sum < 0)
+//                 sum = 0;
+//         }
+//         return maxi;
+//     }
+
+// }
+// Maximum Subarray Sum: 6
+
+//Q16 . 55. Jump Game (leetcode )
 import java.util.*;
-import java.util.Arrays;
 
 public class ArraysQuestion {
-
-    public static void main(String[] args) {
-
-        int[] nums = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-        ArraysQuestion sol = new ArraysQuestion();
-        // Calling maxSubArray and printing result
-        int result = sol.maxSubArray(nums);
-        System.out.println("Maximum Subarray Sum: " + result);
+    public boolean canJump(int[] nums) {
+        int lastpos = nums.length - 1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (i + nums[i] >= lastpos) {
+                lastpos = i;
+            }
+        }
+        return lastpos == 0;
     }
 
-    public int maxSubArray(int[] nums) {
-        int sum = 0;
-        int maxi = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            sum = sum + nums[i];
-            maxi = Math.max(maxi, sum);
-            if (sum < 0)
-                sum = 0;
-        }
-        return maxi;
+    public static void main(String[] args) {
+        ArraysQuestion sol = new ArraysQuestion();
+
+        int[] nums1 = { 2, 3, 1, 1, 4 }; // true
+        int[] nums2 = { 3, 2, 1, 0, 4 }; // false
+
+        System.out.println("Can jump (nums1): " + sol.canJump(nums1));
+        System.out.println("Can jump (nums2): " + sol.canJump(nums2));
     }
 
 }
-// Maximum Subarray Sum: 6
