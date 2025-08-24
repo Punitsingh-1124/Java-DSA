@@ -21,4 +21,5 @@ public class FindMin {
         System.out.println(min(arr));
     }
 }
+//output
 // -7
