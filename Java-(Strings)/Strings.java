@@ -105,11 +105,10 @@
 //     }
 // }
 
-//Sub String
 import java.util.*;
 
 public class Strings {
-    public static void main(MyStringBuilder[] args) {
+    public static void main(String[] args) {
         // String sentence = "My name is tony";
         // String name = sentence.substring(11, sentence.length());
         // System.out.println(name);
@@ -118,9 +117,8 @@ public class Strings {
         // String name = sentence.substring(3);
         // System.out.println(name);
         // //Hardly
-        MyStringBuilder sentence = "TomHardly";
-        MyStringBuilder name = sentence.substring(0, 3);
-        System.out.println(name);
-        // Tom
+        String sentence = "TomHardly"; // Use String class, not MyStringBuilder
+        String name = sentence.substring(0, 3); // Use String's substring method
+        System.out.println(name); // Tom
     }
 }
