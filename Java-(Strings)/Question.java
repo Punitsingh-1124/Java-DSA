@@ -33,44 +33,86 @@
 //Q2. print all the duplicate characters in a string 
 // Java Code to print duplicate characters 
 // and their counts using Sorting 
-import java.util.*;
+// import java.util.*;
 
-class Question {
+// class Question {
 
-    // Function to print duplicate characters with their count
-    static void printDuplicates(String s) {
+//     // Function to print duplicate characters with their count
+//     static void printDuplicates(String s) {
 
-        // Convert string to character array
-        char[] arr = s.toCharArray();
+//         // Convert string to character array
+//         char[] arr = s.toCharArray();
 
-        // Sort the string to group same characters together
-        Arrays.sort(arr);
+//         // Sort the string to group same characters together
+//         Arrays.sort(arr);
 
-        // Traverse the sorted string to count duplicates
-        for (int i = 0; i < arr.length;) {
+//         // Traverse the sorted string to count duplicates
+//         for (int i = 0; i < arr.length;) {
 
-            int count = 1;
+//             int count = 1;
 
-            // Count occurrences of current character
-            while (i + count < arr.length && arr[i] == arr[i + count]) {
-                count++;
-            }
+//             // Count occurrences of current character
+//             while (i + count < arr.length && arr[i] == arr[i + count]) {
+//                 count++;
+//             }
 
-            // If count > 1, print the character and its count
-            if (count > 1) {
-                System.out.print("['" + arr[i] + "', " + count + "], ");
-            }
+//             // If count > 1, print the character and its count
+//             if (count > 1) {
+//                 System.out.print("['" + arr[i] + "', " + count + "], ");
+//             }
 
-            // Move to the next different character
-            i += count;
+//             // Move to the next different character
+//             i += count;
+//         }
+//     }
+
+//     public static void main(String[] args) {
+
+//         String s = "geeksforgeeks";
+
+//         printDuplicates(s);
+//     }
+// }
+// // ['e', 4], ['g', 2], ['k', 2], ['s', 2],
+
+//Q3. Rotate String
+// public class Question {
+
+//     // Method to check if one string is a rotation of another
+//     public static boolean rotateString(String s, String goal) {
+//         return s.length() == goal.length() && (s + s).contains(goal);
+//     }
+
+//     // Main method to test the function
+//     public static void main(String[] args) {
+//         String s = "abcde";
+//         String goal = "cdeab";
+
+//         boolean result = rotateString(s, goal);
+//         System.out.println("Is \"" + goal + "\" a rotation of \"" + s + "\"? " + result);
+//     }
+// }
+
+//Solution 2
+public class Question {
+
+    // Method to check if one string is a rotation of another
+    public static boolean rotateString(String s, String goal) {
+        if (goal.length() != s.length()) {
+            return false;
         }
+        String rotated = s + s;
+        return rotated.contains(goal);
     }
 
+    // Main method to test the function
     public static void main(String[] args) {
+        String s = "abcde";
+        String goal = "cdeab";
 
-        String s = "geeksforgeeks";
-
-        printDuplicates(s);
+        boolean result = rotateString(s, goal);
+        System.out.println("Is \"" + goal + "\" a rotation of \"" + s + "\"? " + result);
     }
 }
-// ['e', 4], ['g', 2], ['k', 2], ['s', 2],
+
+// Is "cdeab" a rotation of "abcde"? true
