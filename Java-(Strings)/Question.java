@@ -94,25 +94,62 @@
 // }
 
 //Solution 2
-public class Question {
+// public class Question {
 
-    // Method to check if one string is a rotation of another
-    public static boolean rotateString(String s, String goal) {
-        if (goal.length() != s.length()) {
-            return false;
-        }
-        String rotated = s + s;
-        return rotated.contains(goal);
-    }
+//     // Method to check if one string is a rotation of another
+//     public static boolean rotateString(String s, String goal) {
+//         if (goal.length() != s.length()) {
+//             return false;
+//         }
+//         String rotated = s + s;
+//         return rotated.contains(goal);
+//     }
 
-    // Main method to test the function
-    public static void main(String[] args) {
-        String s = "abcde";
-        String goal = "cdeab";
+//     // Main method to test the function
+//     public static void main(String[] args) {
+//         String s = "abcde";
+//         String goal = "cdeab";
 
-        boolean result = rotateString(s, goal);
-        System.out.println("Is \"" + goal + "\" a rotation of \"" + s + "\"? " + result);
-    }
-}
+//         boolean result = rotateString(s, goal);
+//         System.out.println("Is \"" + goal + "\" a rotation of \"" + s + "\"? " + result);
+//     }
+// }
 
 // Is "cdeab" a rotation of "abcde"? true
+
+//Q4. 38. Count and Say (38)
+public class Question {
+    public static void main(String[] args) {
+        int n = 5; // You can change this value to test other inputs
+        String result = countAndSay(n);
+        System.out.println("Count and Say result for n = " + n + ": " + result);
+    }
+
+    public static String countAndSay(int n) {
+        String s = "1";
+        for (int i = 1; i < n; i++) { // Fix: start from i = 1 instead of i = 0
+            s = countAndSayHelper(s);
+        }
+        return s;
+    }
+
+    public static String countAndSayHelper(String s) {
+        StringBuilder sb = new StringBuilder();
+        char previous = s.charAt(0);
+        int count = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == previous) {
+                count++;
+            } else {
+                sb.append(count);
+                sb.append(previous);
+                previous = s.charAt(i);
+                count = 1;
+            }
+        }
+        sb.append(count);
+        sb.append(previous);
+        return sb.toString();
+    }
+}
+// Count and Say result for n = 5: 111221
