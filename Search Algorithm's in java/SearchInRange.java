@@ -30,4 +30,3 @@ public class SearchInRange {
 }
 // 3
 // not in 1 to 4 index range 18 is index 0 value that why -1.
- 

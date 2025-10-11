@@ -1,7 +1,6 @@
 // import java.util.*;
 
-// public clas {
-
+// public class SearchInStrings  {
 //     public static boolean searchString(String str, char target) {
 //         if (str.length() == 0) {
 //             return false;

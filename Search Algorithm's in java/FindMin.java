@@ -1,5 +1,29 @@
 
-//Find min element in the array
+// //Find min element in the array
+// import java.util.*;
+
+// public class FindMin {
+
+//     // Assume arr.length !=0;
+//     // return the minimum value in the array
+//     public static int min(int[] arr) {
+//         int ans = arr[0];
+//         for (int i = 1; i < arr.length; i++) {
+//             if (arr[i] < ans) {
+//                 ans = arr[i];
+//             }
+//         }
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+//         int arr[] = { 18, 12, -7, 3, 14, 28 };
+//         System.out.println(min(arr));
+//     }
+// }
+//output
+// -7
+//Find max element in the array
 import java.util.*;
 
 public class FindMin {
@@ -9,7 +33,7 @@ public class FindMin {
     public static int min(int[] arr) {
         int ans = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            if (arr[i] < ans) {
+            if (arr[i] > ans) {
                 ans = arr[i];
             }
         }
@@ -21,5 +45,5 @@ public class FindMin {
         System.out.println(min(arr));
     }
 }
-//output
-// -7
+// output
+// 28
