@@ -28,59 +28,108 @@
 // [2,2]
 
 //Maximun
+// import java.util.*;
+
+// public class SearchIn2DArray {
+
+//     public static void main(String[] args) {
+//         int[][] arr = {
+//                 { 23, 4, 1 },
+//                 { 18, 12, 3, 9 },
+//                 { 78, 99, 34, 58 },
+//                 { 18, 12 }
+//         };
+//         int target = 58;
+//         int[] ans = Search(arr, target); // format of return value {row,col}
+//         System.out.println(Arrays.toString(ans));
+//         System.out.println(max(arr));
+//         System.out.println(min(arr));
+//     }
+
+//     public static int[] Search(int[][] arr, int target) {
+//         for (int row = 0; row < arr.length; row++) {
+//             for (int col = 0; col < arr[row].length; col++) {
+//                 if (arr[row][col] == target) {
+//                     return new int[] { row, col };
+//                 }
+//             }
+//         }
+//         return new int[] { -1, -1 }; // moved this line outside the loop
+//     }
+
+//     public static int max(int[][] arr) {
+//         int max = Integer.MIN_VALUE;
+//         for (int row = 0; row < arr.length; row++) {
+//             for (int col = 0; col < arr[row].length; col++) {
+//                 if (arr[row][col] > max) {
+//                     max = arr[row][col];
+//                 }
+//             }
+//         }
+//         return max;
+//     }
+
+//     public static int min(int[][] arr) {
+//         int min = Integer.MAX_VALUE;
+//         for (int row = 0; row < arr.length; row++) {
+//             for (int col = 0; col < arr[row].length; col++) {
+//                 if (arr[row][col] < min) {
+//                     min = arr[row][col];
+//                 }
+//             }
+//         }
+//         return min;
+//     }
+// }
+// [2, 3]
+// 99
+// 1
+
 import java.util.*;
 
 public class SearchIn2DArray {
 
     public static void main(String[] args) {
-        int[][] arr = {
-                { 23, 4, 1 },
-                { 18, 12, 3, 9 },
-                { 78, 99, 34, 58 },
-                { 18, 12 }
-        };
-        int target = 58;
-        int[] ans = Search(arr, target); // format of return value {row,col}
-        System.out.println(Arrays.toString(ans));
-        System.out.println(max(arr));
-        System.out.println(min(arr));
+        int[] nums = { 12, 345, 2, 6, 7896 };
+        System.out.println(findNumbers(nums));
+        System.out.println(digits2(-123455));
     }
 
-    public static int[] Search(int[][] arr, int target) {
-        for (int row = 0; row < arr.length; row++) {
-            for (int col = 0; col < arr[row].length; col++) {
-                if (arr[row][col] == target) {
-                    return new int[] { row, col };
-                }
+    public static int findNumbers(int[] nums) {
+        int count = 0;
+        for (int num : nums) {
+            if (even(num)) {
+                count++;
             }
         }
-        return new int[] { -1, -1 }; // moved this line outside the loop
+        return count;
     }
 
-    public static int max(int[][] arr) {
-        int max = Integer.MIN_VALUE;
-        for (int row = 0; row < arr.length; row++) {
-            for (int col = 0; col < arr[row].length; col++) {
-                if (arr[row][col] > max) {
-                    max = arr[row][col];
-                }
-            }
-        }
-        return max;
+    // function to check even or not
+    public static boolean even(int num) {
+        int numberOfDigits = digits(num);
+        return numberOfDigits % 2 == 0;
     }
 
-    public static int min(int[][] arr) {
-        int min = Integer.MAX_VALUE;
-        for (int row = 0; row < arr.length; row++) {
-            for (int col = 0; col < arr[row].length; col++) {
-                if (arr[row][col] < min) {
-                    min = arr[row][col];
-                }
-            }
+    public static int digits2(int num) {
+        if (num < 0) {
+            num = num * -1;
         }
-        return min;
+        return (int) (Math.log10(num) + 1);
+    }
+
+    public static int digits(int num) {
+        int count = 0;
+        if (num == 0)
+            return 1;
+        if (num < 0)
+            num = -num;
+        while (num > 0) {
+            count++;
+            num = num / 10;
+        }
+        return count;
     }
 }
-// [2, 3]
-// 99
-// 1
+// 2
+// 6 for digits2
